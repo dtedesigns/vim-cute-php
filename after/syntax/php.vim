@@ -1,18 +1,26 @@
+" we need the conceal feature (vim ≥ 7.3)
 if exists('g:no_php_conceal') || !has('conceal') || &enc != 'utf-8'
     finish
 endif
 
+syntax match phpNiceOperator "\<or\>" conceal cchar=∪ contained containedin=phpRegion
 syntax match phpNiceOperator "||" conceal cchar=∨ contained containedin=phpRegion
+syntax match phpNiceOperator "\<and\>" conceal cchar=∩ contained containedin=phpRegion
 syntax match phpNiceOperator "&&" conceal cchar=∧ contained containedin=phpRegion
 syntax match phpNiceOperator "!" conceal cchar=¬ contained containedin=phpRegion
+
 syntax match phpNiceOperator "<=" conceal cchar=≤ contained containedin=phpRegion
 syntax match phpNiceOperator ">=" conceal cchar=≥ contained containedin=phpRegion
 syntax match phpNiceOperator "==" conceal cchar=≈ contained containedin=phpRegion
 syntax match phpNiceOperator "===" conceal cchar=≡ contained containedin=phpRegion
+syntax match phpNiceOperator "!=" conceal cchar=≉ contained containedin=phpRegion
+syntax match phpNiceOperator "!==" conceal cchar=≠ contained containedin=phpRegion
+syntax match phpNiceOperator "!==" conceal cchar=≢ contained containedin=phpRegion
+
 syntax match phpNiceOperator "::" conceal cchar=∷ contained containedin=phpRegion
-syntax match phpNiceOperator "!=" conceal cchar=≠ contained containedin=phpRegion
-syntax match phpNiceRelation "=>" conceal cchar=⇛ contained containedin=phpRegion
-syntax match phpNiceMemberSelector "\->" conceal cchar=→ contained containedin=phpRegion
+syntax match phpNiceOperator "=>" conceal cchar=➮ contained containedin=phpRegion
+syntax match phpNiceRelation "=>" conceal cchar=➯ contained containedin=phpRegion
+syntax match phpNiceMemberSelector "\->" conceal cchar=➔ contained containedin=phpRegion
 
 hi link phpNiceOperator phpOperator
 hi link phpNiceStatement phpStatement
@@ -21,4 +29,4 @@ hi link phpNiceRelation phpRelation
 hi link phpNiceMemberSelector phpMemberSelector
 hi! link Conceal phpOperator
 
-setlocal conceallevel=2
+setlocal conceallevel=1
